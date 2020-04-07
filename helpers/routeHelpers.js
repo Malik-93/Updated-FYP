@@ -13,7 +13,6 @@ module.exports = {
       next();
     }
   },
-
   schemas: {
     authSchema: Joi.object().keys({
       fname:Joi.string(),
