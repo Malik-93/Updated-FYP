@@ -6,8 +6,8 @@ const reponseHandler = utils.reponseHandler;
 
 signToken = user => {
   return JWT.sign({
-    iss: 'Clothing',
-    sub: user.id,
+    iss: 'User',
+    sub: user,
     iat: new Date().getTime(), // current time
     exp: new Date().setDate(new Date().getDate() + 1) // current time + 1 day ahead
   }, JWT_SECRET);
@@ -22,7 +22,7 @@ module.exports = {
       return reponseHandler(res, 403, { message: 'Email is already in use' })
     }
     // Create a new user
-    const newUser = new User({ fname, lname, email, password });
+    const newUser = new User({ fname, lname, email, password, cart: [] });
     await newUser.save();
     return reponseHandler(res, 200, { success: true, message: 'Welcome! You are successfully sign Up', user: newUser })
   },
