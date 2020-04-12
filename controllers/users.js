@@ -22,7 +22,7 @@ module.exports = {
       return reponseHandler(res, 403, { message: 'Email is already in use' })
     }
     // Create a new user
-    const newUser = new User({ fname, lname, email, password, cart: [] });
+    const newUser = new User({ fname, lname, email, password });
     await newUser.save();
     return reponseHandler(res, 200, { success: true, message: 'Welcome! You are successfully sign Up', user: newUser })
   },

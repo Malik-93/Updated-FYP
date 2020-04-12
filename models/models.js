@@ -25,9 +25,6 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  cart: {
-    type: Array,
-  }
 });
 
 userSchema.pre('save', async function (next) {
@@ -56,7 +53,7 @@ userSchema.methods.isValidPassword = async function (newPassword) {
 const User = mongoose.model('user', userSchema);
 
 const Product = mongoose.model('products', {
-  title: String, price: Number, company: String, description: String, productImage: String,
+  title: String, price: Number, company: String, description: String, productImage: String, quantity: Number,
   inCart: Boolean, count: Number, total: Number, sizesAvail: Array, colorsAvail: Array,
 });
 
